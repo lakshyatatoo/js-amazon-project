@@ -44,15 +44,50 @@ products.forEach((product) => {
           </div>
 
           <div class="product-spacer"></div>
-
           <div class="added-to-cart">
             <img src="images/icons/checkmark.png" />
             Added
           </div>
 
-          <button class="add-to-cart-button button-primary">Add to Cart</button>
+          <button class="add-to-cart-button button-primary addtocart-js" data-product-name="${
+            product.name //fetching name for individual product not whole so no 's
+          }" data-product-id="${product.id}">Add to Cart</button>
         </div>
 `;
 });
 
 document.querySelector(".product-grid-js").innerHTML = productHtml;
+
+//
+//
+//gives list of all add to cart buttons
+document.querySelectorAll(".addtocart-js").forEach((button) => {
+  button.addEventListener("click", () => {
+    //storing name in a variable
+    const productId = button.dataset.productId;
+    //using id for duplicate product names
+    //converting from kebab case to camo case
+
+    //check if product alreasdy in cart just increment its quantity
+    let matchingitem; //get the individual obj in cart
+    cart.forEach((item) => {
+      if (productId === item.productId) {
+        matchingitem = item; //takes item with product name;
+      }
+    });
+    //and matching get let each time button clicked so if amthcing item not set to item then it will be falsy and cart.push happens
+    if (matchingitem) {
+      matchingitem.quantity++;
+      //increments if it is true
+    } else {
+      cart.push({
+        productId: productId,
+        quantity: 1,
+      });
+    }
+    console.log(cart);
+  });
+});
+//
+//
+//
