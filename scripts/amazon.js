@@ -28,7 +28,9 @@ products.forEach((product) => {
             2
           )}</div>
 
-          <div class="product-quantity-container">
+          <div class="product-quantity-container js-quantity-selector-${
+            product.id
+          }">
             <select>
               <option selected value="1">1</option>
               <option value="2">2</option>
@@ -76,17 +78,37 @@ document.querySelectorAll(".addtocart-js").forEach((button) => {
       }
     });
     //and matching get let each time button clicked so if amthcing item not set to item then it will be falsy and cart.push happens
+    //
+    //
+    //
+
+    //
+    //
+    //
+    const quantitydata = document.querySelector(
+      `.js-quantity-selector-${productId} select`
+    );
+    const qd = Number(quantitydata.value); //because we are extracting the value that is a string so we extract it from thre as a number
+    //if option does not
+    //
+    //
+    //
+
+    //
+    //
+    ////adding total cart quantity on icon and incrementign cart quant insead of creating new objects by using unique id
     if (matchingitem) {
-      matchingitem.quantity++;
+      matchingitem.quantity += qd;
       //increments if it is true
     } else {
       cart.push({
         productId: productId,
-        quantity: 1,
+        quantity: qd, //for updated quantity value if a different product is selecte from the id
       });
     }
+
     ///
-    console.log(cart);
+
     //
     let cartQuantity = 0;
     cart.forEach((item) => {
@@ -99,4 +121,3 @@ document.querySelectorAll(".addtocart-js").forEach((button) => {
 //
 //
 //
-//adding total cart quantity on icon
