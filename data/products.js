@@ -68,6 +68,17 @@ const products = [
     keywords: ["kitchen", "cookware"],
   },
   {
+    id: "8c9c52b5-5a19-4bcb-a5d1-158a74287c511403",
+    image: "images/products/lawitself.webp",
+    name: "THE BLADE ITSELF: THE FIRST LAW TRILOGY BOOK 1: Book One",
+    rating: {
+      stars: 4.5,
+      count: 25842,
+    },
+    priceCents: 489,
+    keywords: ["book", "fantasy"],
+  },
+  {
     id: "dd82ca78-a18b-4e2a-9250-31e67412f98d",
     image: "images/products/plain-hooded-fleece-sweatshirt-yellow.jpg",
     name: "Plain Hooded Fleece Sweatshirt",

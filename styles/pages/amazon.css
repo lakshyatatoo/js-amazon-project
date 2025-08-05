@@ -154,3 +154,12 @@
   padding: 8px;
   border-radius: 50px;
 }
+.added-to-cart {
+  opacity: 0;
+}
+.add-to-cart-visible {
+  opacity: 1;
+}
+.check-img-js {
+  height: 20px;
+}
