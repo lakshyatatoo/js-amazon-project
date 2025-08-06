@@ -1,4 +1,4 @@
-import { cart } from "../data/cart.js"; //importing cart varibale from cart.js
+import { cart, addtoocart } from "../data/cart.js"; //importing cart varibale from cart.js
 import { products } from "../data/products.js";
 //mycart to avoid naming conflicts
 // since we are exporting this varibale we can remove cart from html file and now no naming conflict will be ther if i name a cart varibale
@@ -64,12 +64,20 @@ products.forEach((product) => {
 
 document.querySelector(".product-grid-js").innerHTML = productHtml;
 
-// let torem;
 // This object stores a unique timeout ID for each product.
 // It allows us to clear a specific product's timer without affecting others,
 // which is crucial for handling multiple "Add to Cart" clicks on different products.
 const addedMsgTmt = {};
-//
+
+function updateCartQuantity() {
+  let cartQuantity = 0;
+  cart.forEach((cartItem) => {
+    cartQuantity += cartItem.quantity;
+  });
+
+  document.querySelector(".cart-quantity-js").innerHTML = cartQuantity;
+}
+
 //gives list of all add to cart buttons
 document.querySelectorAll(".addtocart-js").forEach((button) => {
   button.addEventListener("click", () => {
@@ -78,63 +86,15 @@ document.querySelectorAll(".addtocart-js").forEach((button) => {
     //using id for duplicate product names
     //converting from kebab case to camo case
 
-    //check if product alreasdy in cart just increment its quantity
-    let matchingitem; //get the individual obj in cart
-    cart.forEach((item) => {
-      if (productId === item.productId) {
-        matchingitem = item; //takes item with product name;
-      }
-    });
-    //and matching get let each time button clicked so if amthcing item not set to item then it will be falsy and cart.push happens
-    //
-    //
-    //
-
-    //
-    //
-    //
-    const quantitydata = document.querySelector(
-      `.js-quantity-selector-${productId} select`
-    );
-    const quantity = Number(quantitydata.value); //because we are extracting the value that is a string so we extract it from thre as a number
-    //if option does not
-    //
-    //
-    //
-
-    //
-    //
-    ////adding total cart quantity on icon and incrementign cart quant insead of creating new objects by using unique id
-    if (matchingitem) {
-      matchingitem.quantity += quantity;
-      //increments if it is true
-    } else {
-      cart.push({
-        //shorthand property
-        productId,
-        quantity, //for updated quantity value if a different product is selecte from the id
-      });
-    }
-
     ///
-
+    addtoocart(productId);
+    updateCartWuantity();
     //
-    let cartQuantity = 0;
-    cart.forEach((item) => {
-      cartQuantity += item.quantity;
-    });
-
-    document.querySelector(".cart-quantity-js").innerHTML = cartQuantity;
-    //
-
     const addedmsg = document.querySelector(`.adc-js-${productId}`);
-
     addedmsg.classList.add("add-to-cart-visible");
-    ////
     //
     clearTimeout(addedMsgTmt[productId]);
     //
-
     addedMsgTmt[productId] = setTimeout(() => {
       //added a object for removing added msg when multiple produts are clicked
       addedmsg.classList.remove("add-to-cart-visible");
