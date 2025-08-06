@@ -1,4 +1,14 @@
-export const cart = []; //help access varibales outside the file
+export const cart = [
+  {
+    productId: "15b6fc6f-327a-4ec4-896f-486349e85a3d",
+    quantity: 2,
+  },
+  {
+    //default values for basic
+    productId: "e43638ce-6aa0-4b85-b27f-e1d07eb678c6",
+    quantity: 2,
+  },
+]; //help access varibales outside the file
 
 export function addtoocart(productId) {
   const quantitydata = document.querySelector(
