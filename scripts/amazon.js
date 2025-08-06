@@ -1,4 +1,4 @@
-import { cart, addtoocart } from "../data/cart.js"; //importing cart varibale from cart.js
+import { cart, addtocart } from "../data/cart.js"; //importing cart varibale from cart.js
 import { products } from "../data/products.js";
 import { currencyFormat } from "./utils/money.js";
 //mycart to avoid naming conflicts
@@ -88,8 +88,8 @@ document.querySelectorAll(".addtocart-js").forEach((button) => {
     //converting from kebab case to camo case
 
     ///
-    addtoocart(productId);
-    updateCartWuantity();
+    addtocart(productId);
+    updateCartQuantity();
     //
     const addedmsg = document.querySelector(`.adc-js-${productId}`);
     addedmsg.classList.add("add-to-cart-visible");
