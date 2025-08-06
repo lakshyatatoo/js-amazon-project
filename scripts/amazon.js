@@ -1,4 +1,8 @@
-//
+import { cart } from "../data/cart.js"; //importing cart varibale from cart.js
+import { products } from "../data/products.js";
+//mycart to avoid naming conflicts
+// since we are exporting this varibale we can remove cart from html file and now no naming conflict will be ther if i name a cart varibale
+
 //adding a string each time we loop throguh a array to create all product combined html string
 let productHtml = "";
 products.forEach((product) => {
@@ -8,7 +12,7 @@ products.forEach((product) => {
               class="product-image"
               src="${product.image}"
             />
-          </div>
+          </div> 
 
           <div class="product-name limit-text-to-2-lines">
            ${product.name}
