@@ -1,4 +1,4 @@
-export const cart = [
+export let cart = [
   {
     productId: "15b6fc6f-327a-4ec4-896f-486349e85a3d",
     quantity: 2,
@@ -36,4 +36,14 @@ export function addtoocart(productId) {
       quantity, //for updated quantity value if a different product is selecte from the id
     });
   }
+}
+
+export function removeFromCart(productId) {
+  const newCart = [];
+  cart.forEach((cartItem) => {
+    if (cartItem.productId !== productId) {
+      newCart.push(cartItem); // it pushes the cart item to new arr and only the one which ha the productId remains in cart object
+    }
+  });
+  cart = newCart; //cart will have only 1 item remaining
 }
