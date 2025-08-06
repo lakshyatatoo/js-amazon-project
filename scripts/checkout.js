@@ -13,7 +13,9 @@ cart.forEach((cartItem) => {
     }
   }); //if the product id is same we directly fetch whole produt detailes
   //cart has by default 2 items so it will genrate for those two.
-  cartSummaryHtml += `<div class="cart-item-container">
+  cartSummaryHtml += `<div class="cart-item-container js-cart-item-container-${
+    matchingProduct.id
+  }">
             <div class="delivery-date">Delivery date: Tuesday, June 21</div>
 
             <div class="cart-item-details-grid">
@@ -95,6 +97,9 @@ document.querySelectorAll(".js-delete-link").forEach((link) => {
     const { productId } = link.dataset;
 
     removeFromCart(productId); //so it will fetch the id and keep only that one in the cart.
-    console.log(cart);
+    const container = document.querySelector(
+      `.js-cart-item-container-${productId}`
+    );
+    container.remove(); //dom method to remove compleete html for a classs or dom selected query
   });
 });
