@@ -1,5 +1,6 @@
 import { cart, addtoocart } from "../data/cart.js"; //importing cart varibale from cart.js
 import { products } from "../data/products.js";
+import { currencyFormat } from "./utils/money.js";
 //mycart to avoid naming conflicts
 // since we are exporting this varibale we can remove cart from html file and now no naming conflict will be ther if i name a cart varibale
 
@@ -29,7 +30,7 @@ products.forEach((product) => {
           </div>
 
           <div class="product-price">
-          $${(product.priceCents / 100).toFixed(2)}</div>
+          $${currencyFormat(product.priceCents)}</div>
 
           <div class="product-quantity-container js-quantity-selector-${
             product.id
