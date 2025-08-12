@@ -99,7 +99,7 @@ document.querySelectorAll(".addtocart-js").forEach((button) => {
     addedMsgTmt[productId] = setTimeout(() => {
       //added a object for removing added msg when multiple produts are clicked
       addedmsg.classList.remove("add-to-cart-visible");
-    }, 2000);
+    }, 2500);
 
     ///
     //
