@@ -70,7 +70,7 @@ document.querySelector(".product-grid-js").innerHTML = productHtml;
 // which is crucial for handling multiple "Add to Cart" clicks on different products.
 const addedMsgTmt = {};
 
-function updateCartQuantity() {
+export function updateCartQuantity() {
   let cartQuantity = 0;
   cart.forEach((cartItem) => {
     cartQuantity += cartItem.quantity;

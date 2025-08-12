@@ -103,3 +103,11 @@ document.querySelectorAll(".js-delete-link").forEach((link) => {
     container.remove(); //dom method to remove compleete html for a classs or dom selected query
   });
 });
+
+let cartQuantity = 0; //to display in checkout items on top
+cart.forEach((cartItem) => {
+  cartQuantity += cartItem.quantity;
+});
+document.querySelector(
+  ".js-return-to-home-link"
+).innerHTML = `${cartQuantity} items`;
